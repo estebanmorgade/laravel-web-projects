@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Crear proyecto')
+@section('title', __(('New Project')))
 
 @section('content')
 
@@ -12,7 +12,7 @@
             
             <form class="bg-white py-3 px-4 shadow rounded" enctype="multipart/form-data" action="{{route('projects.store')}}" method="post">
                 
-                <h1 class="display-4">Nuevo proyecto</h1>
+                <h1 class="display-4">{{__(('New project'))}}</h1>
                 <hr>
 
                 @include('projects._form')

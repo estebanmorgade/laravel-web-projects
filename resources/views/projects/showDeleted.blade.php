@@ -27,18 +27,18 @@
 
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{ route('projects.index',['deletes' => 'true']) }}">Regresar</a>
+                            <a href="{{ route('projects.index',['deletes' => 'true']) }}">{{__(('Return'))}}</a>
                         @auth
                             <div class="btn-group btn-group-sm">
                                 <form action="{{ route('projects.restore', $project) }}" method="post">
                                     @csrf @method('PATCH')
-                                    <button class="btn btn-primary" type="submit">Restaurar</button>
+                                    <button class="btn btn-primary" type="submit">{{__(('Restore'))}}</button>
                                 </form>
 
                                 <form onsubmit="return confirm('¿Estás seguro de ejecutar esta acción?')"
                                     action="{{ route('projects.force-delete', $project) }}" method="post">
                                     @csrf @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    <button class="btn btn-danger" type="submit">{{__(('Delete'))}}</button>
                                 </form>
                             </div>
                             

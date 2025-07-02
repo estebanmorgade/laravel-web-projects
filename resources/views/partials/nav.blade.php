@@ -11,7 +11,7 @@
                 <li class="nav-item"><a class="nav-link {{ setActive('about') }}" href="{{ route("about") }}">@lang('About')</a></li>
                 <li class="nav-item"><a class="nav-link {{ setActive('projects.*') }}" href="{{ route("projects.index") }}">@lang('Projects')</a></li>
                 @guest
-                  <li class="nav-item"><a class="nav-link" href="{{ route("login") }}">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ route("login") }}">@lang('Login')</a></li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="event.preventDefault();

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    Contact
+    @lang('Contact')
 @endsection
 
 @section('content')
@@ -27,11 +27,11 @@
                 <hr>
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nombre</label>
+                    <label for="name" class="form-label">{{__('Name')}}</label>
                     <input class="form-control bg-light shadow-sm @error('name') is-invalid @else border-0 @enderror"
                         type="text"
                         name="name"
-                        placeholder="Nombre ..."
+                        placeholder="{{__('Name')}} ..."
                         id="name"
                         value="{{ old("name") }}"> {{-- old sirve para recordar el valor ingresado anteriormente --}}
                         @error('name')
@@ -62,11 +62,11 @@
                 
 
                 <div class="mb-3">
-                    <label for="subject" class="form-label">Asunto</label>
+                    <label for="subject" class="form-label">{{__('Subject')}}</label>
                     <input class="form-control bg-light shadow-sm @error('subject') is-invalid @else border-0 @enderror"
                         type="text"
                         name="subject"
-                        placeholder="Asunto ..."
+                        placeholder="{{__('Subject')}} ..."
                         id="subject"
                         value="{{ old("subject") }}">
                     @error('subject')
@@ -78,10 +78,10 @@
                 
 
                 <div class="mb-3">
-                    <label for="content" class="form-label">Contenido</label>
+                    <label for="content" class="form-label">{{__('Messsage')}}</label>
                     <textarea class="form-control bg-light shadow-sm @error('content') is-invalid @else border-0 @enderror"
                         name="content"
-                        placeholder="Mensaje ..."
+                        placeholder="{{__('Message')}} ..."
                         id="content"
                         cols="30"
                         rows="10">

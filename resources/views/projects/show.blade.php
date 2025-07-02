@@ -27,15 +27,15 @@
 
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{ route('projects.index') }}">Regresar</a>
+                            <a href="{{ route('projects.index') }}">{{__(('Return'))}}</a>
                         @auth
                             <div class="btn-group btn-group-sm">
                                 @can('update', $project)
-                                    <a class="btn btn-primary" href="{{ route('projects.edit', $project) }}">Editar</a>
+                                    <a class="btn btn-primary" href="{{ route('projects.edit', $project) }}">{{__(('Edit'))}}</a>
                                 @endcan
 
                                 @can('delete', $project)
-                                    <a class="btn btn-danger" href="#" onclick="document.getElementById('delete-project').submit()">Eliminar</a>
+                                    <a class="btn btn-danger" href="#" onclick="document.getElementById('delete-project').submit()">{{__(('Delete'))}}</a>
                                 @endcan
                             </div>
                             @can('delete', $project)

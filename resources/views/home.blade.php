@@ -14,7 +14,7 @@
               Earum, illum omnis quasi alias dolores rerum aut dolorem tempora amet?
             </p>
             <div class="d-flex flex-column gap-2">
-                <a class="btn btn-lg btn-primary" href="{{ route('contact') }}">Contactame</a>
+                <a class="btn btn-lg btn-primary" href="{{ route('contact') }}">{{__('Contactame')}}</a>
                 <a class="btn btn-lg btn-outline-primary" href="{{ route('projects.index') }}">{{__('Projects')}}</a>
             </div>
         </div>

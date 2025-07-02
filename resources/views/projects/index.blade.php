@@ -1,9 +1,9 @@
 @extends('layout')
 
 @isset($deletes)
-    @section('title', 'Deletes')
+    @section('title', __(('Deletes')))
 @else
-    @section('title', 'Portfolio') {{-- si pasamos el titulo como segundo parametro, evitas los espacios --}}
+    @section('title', __(('Projects'))) {{-- si pasamos el titulo como segundo parametro, evitas los espacios --}}
 @endisset
 
 {{--
@@ -22,14 +22,14 @@
             @isset($deletes)
                 <h1 class="display-4 mb-0">{{ __(('Deletes')) }}</h1>
             @else
-                <h1 class="display-4 mb-0">Portfolio</h1>
+                <h1 class="display-4 mb-0">{{__(('Projects'))}}</h1>
             @endisset
         @endisset
 
         {{--@can('create-projects') FORMA DE HACERLO CON GATES --}}
         @isset($newProject)
             @can('create', $newProject)
-                <a class="btn btn-primary" href="{{route('projects.create')}}">Crear proyecto</a>
+                <a class="btn btn-primary" href="{{route('projects.create')}}">{{__(('New Project'))}}</a>
             @endcan
         @endisset    
        
@@ -70,7 +70,7 @@
             @empty
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">No proyects to display</h5>
+                        <h5 class="card-title">{{__(('No proyects to display'))}}</h5>
                     </div>
                 </div>
             @endforelse

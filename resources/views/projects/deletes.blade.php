@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Deletes')
+@section('title', __('Deletes'))
 
 
 @section('content')
@@ -27,7 +27,7 @@
                         <p class="card-text text-truncate">{{ $project->description }}</p>
                         
                         <div class="d-flex justify-content-between align-items-center">
-                            <a class="btn btn-primary btn-sm" href="{{ route('projects.show', $project) }}">Ver más...</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('projects.show', $project) }}">{{__('Show All')}}...</a>
                             @if ($project->category_id)
                                 <span class="badge text-bg-secondary">{{ $project->category->name }}</span>
                             @endif
@@ -38,7 +38,7 @@
             @empty
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">No proyects to display</h5>
+                        <h5 class="card-title">{{__('No proyects to display')}}</h5>
                     </div>
                 </div>
             @endforelse
