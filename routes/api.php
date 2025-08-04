@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Api\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,10 @@ Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
         return response()->json(['message' => 'Unauthorized'], 403);
 });
 
+/*
+Route::post('/users', [UserController::class, 'store'])->middleware('auth:sanctum')->name('api.users.store');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('auth:sanctum')->name('api.users.destroy');
+*/
+
+Route::resource('users', UserController::class)
+->names('api.users')->parameters(['users' => 'user']);
