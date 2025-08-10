@@ -26,7 +26,22 @@ class SaveUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => ['required','email',Rule::unique('users')->ignore($this->route('user'))],
             'role' => 'required|string|in:admin,superadmin,user',
-            'password' => 'required'//,'confirmed']
+            'password' => [$this->route('user') ? 'nullable' : 'required','min:8']//,'confirmed']
         ];
     }
+
+    /*public function messages()
+    {
+        return [
+            'name.required' => 'Name field is required',
+            'name.string' => 'Name must be a string',
+            'name.max' => 'Name too long',
+            'email.required' => 'Email field is required',
+            'email.email' => 'Email must be type email',
+            'role.required' => 'Role field is required',
+            'role.string' => 'Role must be a string',
+            'role.in' => 'Role must be user, admin or superadmin',
+            'password.required' => 'Password field is required'
+        ]
+    }*/
 }
