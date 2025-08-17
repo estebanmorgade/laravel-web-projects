@@ -19,6 +19,7 @@
         <header>
             @include('partials/nav')
             @include('partials.session-status')
+            {{ Breadcrumbs::render() }}
         </header>
 
         
