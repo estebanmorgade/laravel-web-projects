@@ -23,7 +23,7 @@ Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum')->na
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+/*
 Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
     if($request->user()->role === 'superadmin')
         return \App\Models\User::all();
@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
         return response()->json(['message' => 'Unauthorized'], 403);
 });
 
-/*
+
 Route::post('/users', [UserController::class, 'store'])->middleware('auth:sanctum')->name('api.users.store');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('auth:sanctum')->name('api.users.destroy');
 */
