@@ -18,7 +18,7 @@ class ProjectPolicy
 
     public function viewDeleted(User $user): bool
     {
-        return $user->role === 'admin';
+        return false;
     }
 
     /**
@@ -42,7 +42,7 @@ class ProjectPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === 'admin';
+        return true;
     }
 
     /**
@@ -50,7 +50,7 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project): bool
     {
-        return $user->role === 'admin';
+        return $user->id === $project->user_id || $user->role === 'admin';
     }
 
     /**
@@ -58,7 +58,7 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project): bool
     {
-        return $user->role === 'admin';
+        return $user->id === $project->user_id || $user->role === 'admin';
     }
 
     /**

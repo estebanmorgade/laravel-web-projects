@@ -24,4 +24,9 @@ class Project extends Model
     public function category(){ // metodo para relacionar los projectos con las categorias
         return $this->belongsTo(Category::class); //el modelo Category no necesita ser importado porque estamos en el mismo namespace
     }
+
+    public function user() // metodo para relacionar los proyectos con los usuarios
+    {
+        return $this->belongsTo(User::class); // el modelo User no necesita ser importado porque estamos en el mismo namespace
+    }
 }

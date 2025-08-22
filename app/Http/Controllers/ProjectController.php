@@ -36,11 +36,22 @@ class ProjectController extends Controller
             ]);
         }
 
-        return view('projects.index', [
-            'newProject' => new Project,
-            'projects' => Project::with('category')->latest()->paginate(6)// latest obtiene todos los datos del modelo ordenados DESC de la columna indicada, por def. 'created_at'
+        if(auth()->user()->role === 'superadmin' || auth()->user()->role === 'admin'){
+            return view('projects.index', [
+                'newProject' => new Project,
+                'projects' => Project::with('category')->latest()->paginate(6)// latest obtiene todos los datos del modelo ordenados DESC de la columna indicada, por def. 'created_at'
                                             // paginate crea paginado por def. de a 15 rows
-        ]);
+            ]);
+        }
+        else{
+            return view('projects.index', [
+                'newProject' => new Project,
+                'projects' => auth()->user()->projects()->with('category')->latest()->paginate(6)
+                            // get the projects of the authenticated user
+            ]);
+        }
+
+        
     }
 
     /**
@@ -48,10 +59,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', $project = new Project);
 
         return view('projects.create', [
-            'project' => $project,
+            'project' => new Project,
             'categories' => Category::pluck('name','id')
         ]);
     }
@@ -74,6 +84,8 @@ class ProjectController extends Controller
         //Project::create($request->all());
 
         $project = new Project($request->validated());
+
+        $project->user_id = auth()->id(); // Set the user_id to the authenticated user's ID
 
         $this->authorize('create', $project);
 
