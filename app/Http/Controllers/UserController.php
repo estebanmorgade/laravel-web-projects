@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\SaveUserRequest;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -19,7 +20,8 @@ class UserController extends Controller
     public function index()
     {
         $this->authorize('viewAny', User::class);
-        return User::all();
+        return UserResource::collection(User::all()); // return all users as a resource collection
+        // podria crear un UserCollection customizado pero no es necesario
     }
 
     //public function show(User $user)
@@ -27,15 +29,15 @@ class UserController extends Controller
     public function store(SaveUserRequest $request)
     {
         $this->authorize('create', $request->user());
-        $user = User::create($request->all());
-        return $user;
+        $user = User::create($request->validated());
+        return new UserResource($user);
     }
 
     public function update(User $user, SaveUserRequest $request)
     {
         $this->authorize('update', $request->user());
         $user->update($request->validated());
-        return $user;
+        return new UserResource($user);
     }
 
     public function destroy(User $user)

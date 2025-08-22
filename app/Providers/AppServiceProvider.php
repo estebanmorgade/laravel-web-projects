@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
         }
         
         Paginator::useBootstrap(); // Usa estilos de Bootstrap 4/5
+
+        JsonResource::withoutWrapping(); // Disable data wrapping for all resources
     }
 }
