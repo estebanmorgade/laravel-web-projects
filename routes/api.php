@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Api\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ApiProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,6 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('au
 
 Route::resource('users', UserController::class)
 ->names('api.users')->parameters(['users' => 'user']);
+
+Route::resource('projects', ApiProjectController::class)
+->names('api.projects')->parameters(['projects' => 'project']);
