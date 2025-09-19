@@ -40,7 +40,7 @@
         {{-- forelse es como foreach pero premite agregar el empty para el caso de variable vacia --}}
             @forelse ($projects as $project)
                 <div class="card border-0 shadow-sm mt-4 mx-auto" style="width: 18rem;">
-                    <img src="/storage/{{ $project->image }}"
+                    <img src="{{ $project->image_url }}"
                         class="card-img-top"
                         alt="{{ $project->title }}"
                         style="height: 150px; object-fit: cover;"/>

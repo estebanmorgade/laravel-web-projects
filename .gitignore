@@ -18,3 +18,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+ubuntu@ec2-52-87-174-111.compute-1.amazonaws.com
+claves_servidor.pem
+compose.yaml
+Dockerfile

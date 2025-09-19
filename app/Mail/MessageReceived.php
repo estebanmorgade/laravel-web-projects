@@ -13,7 +13,7 @@ class MessageReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = 'Mensaje recibido';
+    public $subject;
 
     public $msg;
     /**
@@ -22,6 +22,7 @@ class MessageReceived extends Mailable
     public function __construct($msg)
     {
         $this->msg = $msg;
+        $this->subject = $msg['subject'];
     }
 
     /**
@@ -30,7 +31,7 @@ class MessageReceived extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Message Received',
+            subject: $this->subject,
         );
     }
 

@@ -1,4 +1,4 @@
-FROM php:8.2-fpm as build
+FROM php:8.2-fpm AS build
 
 RUN apt-get update && apt-get install -y \
 git \
@@ -42,7 +42,7 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Puerto PHP-FPM
 EXPOSE 9000
 
-FROM build as final
+FROM build AS final
 
 # Comando final
 CMD ["php-fpm"]
