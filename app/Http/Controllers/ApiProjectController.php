@@ -61,7 +61,7 @@ class ApiProjectController extends Controller
      */
     public function update(Project $project, SaveProjectRequest $request)
     {
-        $this->authorize('update', $request->project());
+        $this->authorize('update', $project);
         $project->update($request->validated());
         return new ProjectResource($project);
     }

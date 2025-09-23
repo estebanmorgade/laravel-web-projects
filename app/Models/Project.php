@@ -15,16 +15,16 @@ class Project extends Model
 
     //protected $fillable = ['title','url','description']; fillable indica los campos admitidos para modificar en la base
 
-    protected $guarded = []; //indica lo contrario, lo dejamos vacio sin seguridad ya que no estamos usando request()->all en el metodo store
+    protected $guarded = ['image_url']; //indica lo contrario, lo dejamos vacio sin seguridad ya que no estamos usando request()->all en el metodo store
 
     protected $appends = ['image_url'];  // indica los atributos adicionales que se quieren agregar al modelo cuando se convierte a array o json
 
     // Accessors & Mutators
     public function getImageUrlAttribute(){ // acccesor para obtener la url de la imagen
         if($this->image){
-            return Storage::url($this->image); // Storage::url genera la url completa a partir de la ruta relativa
+            return env('FILESYSTEM_DISK') === "local" ? env('APP_URL').Storage::url($this->image) : Storage::url($this->image); // Storage::url genera la url completa a partir de la ruta relativa
         }
-        return 'https://via.placeholder.com/640x480.png/003366?text=No+Image';
+        return null;
     }
 
 
